@@ -3,7 +3,7 @@ CNT
 
 Cnt is a counter server. Backed by [Redis](http://redis.io).
 
-This code is primarely intended to be a playground to learn and explore some of the concepts ni distributed systems I'm interested in.
+This code is primarely intended to be a playground to learn and explore some of the concepts and technologies I'm interested in.
 
 API
 ---
@@ -22,11 +22,10 @@ Running the server
 ------------------
 
 ```
-./cnt-server -port {port-number}
+./cnt-server -port {port-number} -redis {redis-server:redis-port}
 ```
 
 TODO
 ----
-
 * Add Vagrantfile that deploys redis and cnt-server on CoreOS with Docker.
 
