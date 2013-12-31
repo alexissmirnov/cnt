@@ -1,3 +1,5 @@
+// TODO: add description
+
 package main
 
 import (
@@ -29,10 +31,11 @@ func init() {
 func handler(rw http.ResponseWriter, req *http.Request) {
 	var n int
 
-	if req.Method == "GET" {
+	switch req.Method {
+	case "GET":
 		n, _ = redis.Int(redisConnection.Do("GET", req.URL.Path[1:]))
 		fmt.Fprintf(rw, "%d", n)
-	} else if req.Method == "PUT" {
+	case "POST":
 		n, _ = redis.Int(redisConnection.Do("INCR", req.URL.Path[1:]))
 		fmt.Fprintf(rw, "%d", n)
 	}
