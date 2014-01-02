@@ -1,4 +1,5 @@
 all:
+	go install github.com/garyburd/redigo/redis
 	go build
 	go vet
 	go install
