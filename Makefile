@@ -1,5 +1,6 @@
 all:
 	go get github.com/garyburd/redigo/redis
+	go get code.google.com/p/go.tools/cmd/vet
 	go build
 	go vet
 	go install
