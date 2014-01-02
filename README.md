@@ -1,6 +1,9 @@
 CNT
 ===
 
+[![Build Status](https://travis-ci.org/alexissmirnov/cnt.png)](https://travis-ci.org/alexissmirnov/cnt)
+
+
 Cnt is a counter server. Backed by [Redis](http://redis.io).
 
 This code is primarely intended to be a playground to learn and explore some of the concepts and technologies I'm interested in.
