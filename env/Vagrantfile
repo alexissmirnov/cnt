@@ -16,7 +16,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
 		# i+1 because .1 address is reserved by router
 		config.vm.network :private_network, ip: "192.168.65.#{i+1}"
 
-		config.vm.synced_folder ".", "/home/core/share", id: "core-%02d" % i, :nfs => true,  :mount_options   => ['nolock,vers=3,udp']
+		# config.vm.synced_folder ".", "/home/core/share", id: "core", :nfs => true,  :mount_options   => ['nolock,vers=3,udp']
 
 		# Fix docker not being able to resolve private registry in VirtualBox
 		config.vm.provider :virtualbox do |vb, override|
