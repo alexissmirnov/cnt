@@ -1,5 +1,5 @@
 all:
-	go install github.com/garyburd/redigo/redis
+	go get github.com/garyburd/redigo/redis
 	go build
 	go vet
 	go install
