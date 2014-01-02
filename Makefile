@@ -2,7 +2,6 @@ all:
 	go build
 	go vet
 	go install
-	make todo
 
 todo:
 	@grep -n ^[[:space:]]*_[[:space:]]*=[[:space:]][[:alnum:]] *.go || true
