@@ -6,6 +6,7 @@ import (
 	"flag"
 	"fmt"
 	"github.com/garyburd/redigo/redis"
+	"log"
 	"net/http"
 )
 
@@ -38,6 +39,8 @@ func handler(rw http.ResponseWriter, req *http.Request) {
 	case "POST":
 		n, _ = redis.Int(redisConnection.Do("INCR", req.URL.Path[1:]))
 		fmt.Fprintf(rw, "%d", n)
+	default:
+		rw.WriteHeader(http.StatusMethodNotAllowed)
 	}
 }
 
@@ -53,11 +56,12 @@ func connectRedis(address string) redis.Conn {
 func main() {
 	flag.Parse()
 
-	fmt.Printf("Listening on port %d.\n", port)
-	fmt.Printf("Using Redis on %s.\n", redisServerAddress)
+	log.Printf("Listening on port %d", port)
+	log.Printf("Using Redis on %s.\n", redisServerAddress)
 
 	redisConnection = connectRedis(redisServerAddress)
 
 	http.HandleFunc("/", handler)
-	http.ListenAndServe(fmt.Sprintf(":%d", port), nil)
+
+	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%d", port), nil))
 }
