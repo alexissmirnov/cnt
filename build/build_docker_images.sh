@@ -1,5 +1,6 @@
 #!/bin/bash
 
+
 docker build -t alexissmirnov/cnt:redis-image /vagrant/redis
 
 #################### Redis service
@@ -15,7 +16,7 @@ LATEST_IMAGE=`docker images | grep redis-image | awk -F" " '{print ""$3""}'`
 
 DOCKER_CONTAINER=`docker run -d $LATEST_IMAGE /bin/start_redis.sh`
 
-docker export $DOCKER_CONTAINER > /vagrant/redis/redis-image.tar
+docker export $DOCKER_CONTAINER > /vagrant/redis-image.tar
 
 docker stop $DOCKER_CONTAINER
 
@@ -23,7 +24,7 @@ docker stop $DOCKER_CONTAINER
 #################### GO runtime
 
 
-docker build -t alexissmirnov/cnt:cnt-image /vagrant/cnt
+docker build -t alexissmirnov/cnt:cnt-image /vagrant/c
 
 # 
 #
@@ -36,7 +37,7 @@ LATEST_IMAGE=`docker images | grep cnt-image | awk -F" " '{print ""$3""}'`
 
 DOCKER_CONTAINER=`docker run -d $LATEST_IMAGE /bin/cnt -redis 127.0.0.1:6379`
 
-docker export $DOCKER_CONTAINER > /vagrant/cnt/cnt-image.tar
+docker export $DOCKER_CONTAINER > /vagrant/cnt-image.tar
 
 docker stop $DOCKER_CONTAINER
 
