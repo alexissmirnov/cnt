@@ -27,7 +27,27 @@ Running the server
 ./cnt-server -port {port-number} -redis {redis-server:redis-port}
 ```
 
+Build sequence
+--------------
+- Boot a vagrant box that will be used to build docker images
+- Build cnt app on the build box
+- Build docker image for redis, cnt go app
+- Boot the images to get live containers
+- Export containers into .tar files
+- Halt vagrant box
+
+- Boot environment boxes
+- import docker images
+- create autorun config to run docker images
+
+
+Environment
+-----------
+- vagrant up
+
+
+
 TODO
 ----
-* Add Vagrantfile that deploys redis and cnt-server on CoreOS with Docker.
+* Add Docker build step
 

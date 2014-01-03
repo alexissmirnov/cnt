@@ -3,9 +3,13 @@ all:
 	make build
 
 build:
-	go build
+	go build -o build/cnt/cnt
 	go vet
 	go install
+
+build-docker:
+	./build-docker.sh
+
 
 deps:
 	go get github.com/garyburd/redigo/redis
