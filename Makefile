@@ -3,12 +3,12 @@ all:
 	make build
 
 build:
-	go build -o build/cnt/cnt
+	go build -o build/cnt
 	go vet
 	go install
 
 build-docker:
-	./build-docker.sh
+	./build-docker.host.sh
 
 
 deps:
@@ -22,4 +22,11 @@ todo:
 	@grep -n BUG *.go || true
 
 clean:
-	go clean
+	rm ./build/Vagrantfile
+	# FIXME Vagrant won't mount /vagrant filesystem until rebooted, emitting the following error:
+	# Use 'vagrant halt' followed by 'vagrant up' to ensure
+	# 
+	# rm -rf ./build/.vagrant
+ 	# rm ./build/*.tar
+ 	# rm -rf ./build/*.docker
+
